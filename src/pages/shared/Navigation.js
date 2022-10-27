@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Navigation = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { 
+                console.log("successful")
+            })
+            .catch(error => console.error(error))
+    }
+
     return (
         <Navbar className="mb-5" collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -20,9 +32,20 @@ const Navigation = () => {
                     </Nav>
                     <Nav className="align-items-center">
                         <BootstrapSwitchButton checked={false} width={80} height={20} onlabel='Dark' offlabel='Light' onstyle="outline-dark" offstyle="outline-light" style="border" />
-                        <Nav.Link eventKey={2} href="#memes">
-                        <Button variant="warning">Login</Button>
-                        </Nav.Link>
+                        <Nav>
+                                <>
+                                    {
+                                    user?.uid ?
+                                    <>
+                                        <Button className="ms-4" variant="warning" onClick={handleLogOut}>Log out</Button>
+                                    </>
+                                    :
+                                    <>
+                                        <Button className="ms-4" variant="warning"><Link to='/login'>Login</Link></Button>
+                                    </>
+                                    }
+                                </>
+                        </Nav>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
