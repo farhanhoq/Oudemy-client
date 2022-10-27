@@ -10,7 +10,9 @@ const CourseDetails = () => {
     return (
         <div>
             <Card style={{ width: '60%' }}>
-        <Card.Header>Featured</Card.Header>
+        <Card.Header>
+            <Button>Download Details</Button>
+        </Card.Header>
         <Card.Img variant="top" src={img} style={{height: "20rem"}} />
         <Card.Body className="text-center">
             <Card.Title>{name}</Card.Title>

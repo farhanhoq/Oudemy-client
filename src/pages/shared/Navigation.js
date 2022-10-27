@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import { Image } from "react-bootstrap";
 
 const Navigation = () => {
 
@@ -46,6 +47,14 @@ const Navigation = () => {
                                     }
                                 </>
                         </Nav>
+                                <>
+                                    {
+                                        user?.photoURL ?
+                                        <Image className="ms-4" src={user.photoURL} style={{ width: '40px' }} roundedCircle></Image>
+                                        :
+                                        <Image/>
+                                    }
+                                </>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
