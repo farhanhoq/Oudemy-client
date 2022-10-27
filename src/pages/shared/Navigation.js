@@ -4,19 +4,19 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
     return (
-        <div>
-        <Navbar expand="lg" bg="secondary" variant="dark">
+        <Navbar className="mb-5" collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">Oudemy</Navbar.Brand>
+                <Navbar.Brand><Link to='/'>Oudemy</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Courses</Nav.Link>
-                        <Nav.Link href="#pricing">FAQ</Nav.Link>
-                        <Nav.Link href="#pricing">Bog</Nav.Link>
+                        <Nav.Link><Link to='/courses'>Courses</Link></Nav.Link>
+                        <Nav.Link><Link to='/faq'>FAQ</Link></Nav.Link>
+                        <Nav.Link><Link to='/blog'>Blog</Link></Nav.Link>
                     </Nav>
                     <Nav className="align-items-center">
                         <BootstrapSwitchButton checked={false} width={80} height={20} onlabel='Dark' offlabel='Light' onstyle="outline-dark" offstyle="outline-light" style="border" />
@@ -27,8 +27,7 @@ const Navigation = () => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-        </div>
     );
-    };
+};
 
 export default Navigation;
