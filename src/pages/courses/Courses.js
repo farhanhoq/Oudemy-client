@@ -1,9 +1,13 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { useLoaderData } from "react-router-dom";
 import DisplayCourses from "../shared/DisplayCourses";
 import LeftSideNav from "../shared/LeftSideNav";
 
 const Courses = () => {
+
+    const courseName = useLoaderData();
+
     return (
         <div>
         <Container>
@@ -13,7 +17,13 @@ const Courses = () => {
             </Col>
 
             <Col lg="8">
-                <DisplayCourses></DisplayCourses>
+                <div className="row row-cols-1 row-cols-lg-2 g-4">
+                    {
+                        courseName.map(c => 
+                            <DisplayCourses key={c.id} course={c}></DisplayCourses>
+                        )
+                    }
+                </div>
             </Col>
             </Row>
         </Container>
