@@ -1,8 +1,8 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
-import DisplayCourses from "../shared/DisplayCourses";
-import LeftSideNav from "../shared/LeftSideNav";
+import DisplayCourses from "./DisplayCourses";
+import LeftSideNav from "../courses/LeftSideNav";
 
 const Courses = () => {
 
@@ -13,7 +13,14 @@ const Courses = () => {
         <Container>
             <Row>
             <Col lg="4" className="d-none d-lg-block">
-                <LeftSideNav></LeftSideNav>
+                <h3 className="mb-4">Courses We Offer</h3>
+                <div>
+                    {
+                        courseName.map(c => 
+                            <LeftSideNav key={c.id} course={c}></LeftSideNav>
+                        )
+                    }
+                </div>
             </Col>
 
             <Col lg="8">

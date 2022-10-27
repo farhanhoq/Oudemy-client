@@ -1,10 +1,11 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const DisplayCourses = ({ course }) => {
-    console.log(course);
-    const { name, about, img } = course;
+
+    const { name, about, img, id } = course;
 
     return (
         <div className="col">
@@ -14,7 +15,9 @@ const DisplayCourses = ({ course }) => {
                     <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>{about}</Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <Link to={`/details/${id}`}>
+                        <Button variant="primary">Know Details</Button>
+                    </Link>
                     </Card.Body>
                 </Card>
             </div>
