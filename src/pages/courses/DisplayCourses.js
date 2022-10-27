@@ -11,7 +11,7 @@ const DisplayCourses = ({ course }) => {
         <div className="col">
             <div>
                 <Card style={{ width: "18rem" }}>
-                    <Card.Img variant="top" src={img} />
+                    <Card.Img variant="top" src={img} style={{height: "15rem"}} />
                     <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>{about}</Card.Text>

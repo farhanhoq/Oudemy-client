@@ -5,21 +5,29 @@ import { useLoaderData } from "react-router-dom";
 
 const CourseDetails = () => {
     const course = useLoaderData();
-    const { name, about, img, id } = course;
+    const { name, about, img, mentor, rating, price } = course;
 
     return (
-        <Card style={{ width: '18rem' }}>
+        <div>
+            <Card style={{ width: '60%' }}>
         <Card.Header>Featured</Card.Header>
-        <Card.Img variant="top" src="holder.js/100px180" />
+        <Card.Img variant="top" src={img} style={{height: "20rem"}} />
         <Card.Body className="text-center">
             <Card.Title>{name}</Card.Title>
             <Card.Text>
-            {about}
+            <p>{about}</p>
             </Card.Text>
-            <Button variant="primary">Get Premium</Button>
         </Card.Body>
-        <Card.Footer className="text-muted">2 days ago</Card.Footer>
+        <Card.Footer>
+            <div className="text-muted d-flex justify-content-between">
+                <p>Mentor: {mentor}</p>
+                <p>Price: {price}</p>
+                <p>Rating: {rating}</p>
+            </div>
+            <Button variant="primary">Get Premium</Button>
+        </Card.Footer>
         </Card>
+        </div>
     );
 };
 
