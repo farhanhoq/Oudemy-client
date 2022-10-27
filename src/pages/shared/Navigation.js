@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import Button from "react-bootstrap/Button";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { Link } from "react-router-dom";
@@ -11,6 +13,14 @@ import { Image } from "react-bootstrap";
 const Navigation = () => {
 
     const { user, logOut } = useContext(AuthContext);
+    console.log(user)
+
+    const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+            {user.displayName
+    }
+        </Tooltip>
+    )
 
     const handleLogOut = () => {
         logOut()
@@ -47,14 +57,17 @@ const Navigation = () => {
                                     }
                                 </>
                         </Nav>
-                                <>
-                                    {
+                        <OverlayTrigger
+                        placement="right"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltip}>
+                            {
                                         user?.photoURL ?
                                         <Image className="ms-4" src={user.photoURL} style={{ width: '40px' }} roundedCircle></Image>
                                         :
                                         <Image/>
                                     }
-                                </>
+                                </OverlayTrigger>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
